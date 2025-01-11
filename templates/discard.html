@@ -1,0 +1,35 @@
+<!-------------------------------------------------
+<div class="container ">
+    <h1>All Tasks</h1>
+    <ul>
+        {% for task in tasks %}
+        <li>
+            {{ task.name }} {{task.duedate}} {{task.discription}}
+             
+            <button onclick="deleteTask('{{ task.id }}')">Delete</button>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div class="Login">
+    <h2>Add Task</h2>
+    <form action="/add" method='POST'>
+        <div class="mb-3">
+            <label>Task</label>
+            <input type='text', id = 'name', name='name' required>
+        </div>
+        <div class="mb-3">
+            <label>Due Date</label>
+            <input type = 'date', id = 'duedate', name='duedate'>
+        </div>
+        <div class="mb-3">
+            <label>Description</label>
+            <input type='textbox', id='discription', name="discription">
+        </div>
+        <input type='submit' class="btn btn-primary">
+    </form>
+    </div>
+
+</div>
+
+-------------->

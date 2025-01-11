@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% block importstatic %}
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+{% endblock %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+
+<section class="slogan">
+<h1 class="display-3 text-center pb-3">
+  Welcome to <span class="text-primary">App</span>
+  Note anything.
+</h1>
+</section>
+
+
+<section class="pt-4 pt-md-11">
+      <div class="container">
+        <div class="row ml-1">
+          <div class="col-12 col-md-5 col-lg-6 order-md-2">
+
+            <!-- to how task -->
+            <h1 class="display-3 text-center text-md-start item-align-center">All Tasks</h1>
+
+            {% if tasks%}
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Task</th>
+                  <th scope="col">Due Date</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+                    {% for task in tasks %}
+
+                        <div class="lead text-center text-md-start text-body-secondary mb-6 mb-lg-8 font-monospace">
+                          <tbody>
+                            <tr>
+                              <th scope="row">{{task.id}}</th>
+                              <td>{{ task.name }}</td>
+                              <td>{{task.duedate}}</td>
+                              <td>{{task.discription}}</td>
+                              <td>
+                                <!-- button that trigger a javascript function delteTask -->
+                                <button class="btn btn-danger pl-1"  onclick="deleteTask('{{ task.id }}')">Delete</button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        
+                        </div>
+                      
+                    {% endfor %}
+            </table>
+            {% else %}
+                <p>No task Here, Add Task</p>
+            {% endif %}
+
+          </div> <!-- end main div of task show-->
+
+          <!---- Div of Form to add task---->
+          <div class="col-12 col-md-7 col-lg-6 order-md-1 aos-init aos-animate" data-aos="fade-up">
+            <div class="col-12 col-lg-6 bg-white shadow p-3">
+            <div class="form w-100 pb-2">
+
+              <div>
+                <h1 class="display-3 text-center text-md-start">Add Task</h1>
+                <form action="/add" method='POST'>
+                    <div class="col-lg-6 col-md mb-3">
+                        <label>Task</label>
+                        <input type='text', id = 'name', name='name' required>
+                    </div>
+                    <div class="col-lg-6 col-md mb-3">
+                        <label>Due Date</label>
+                        <input type = 'date', id = 'duedate', name='duedate'>
+                    </div>
+                    <div class="col-lg-6 col-md mb-3">
+                        <label>Description</label>
+                        <input type='textbox', id='discription', name="discription">
+                    </div>
+                    
+
+                    <div class="text-center d-grid mt-1">
+                      <button type="button" class="btn btn-primary rounded-pill pt-3 pb-3">
+                        <input type='submit' class="btn btn-primary">
+                      </button>
+                    </div>
+                </form>
+              </div>
+
+            </div>
+            </div>
+
+
+
+          </div> 
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </section>
+{% endblock%}
+{% block footer %}
+    
+{% endblock %}
+
+
+
+
+
+
