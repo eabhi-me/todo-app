@@ -26,17 +26,34 @@
             <!-- Image -->
             <h1 class="text-center text-md-start item-align-center">Search Results for "{{ keyword }}"</h1>
             {% if results %}
-                <ul>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Task</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
                     {% for result in results %}
-                    <li>
-                        <p class="lead text-center text-md-start text-body-secondary mb-6 mb-lg-8">
-                        {{ result.name }} {{result.duedate}} {{result.discription}}
-                        <!-- button that trigger a javascript function delteTask -->
-                        <button class="btn btn-danger pl-1"  onclick="deleteTask('{{ result.id }}')">Delete</button>
-                        </p>
-                    </li>
+                        <div class="lead text-center text-md-start text-body-secondary mb-6 mb-lg-8 font-monospace">
+                            <tbody>
+                            <tr>
+                                <th scope="row">{{result.id}}</th>
+                                <td>{{ result.name }}</td>
+                                <td>{{ result.duedate }}</td>
+                                <td>{{ result.description }}</td>
+                                <td>
+                                <!-- button that trigger a javascript function delteTask -->
+                                <button class="btn btn-danger pl-1"  onclick="deleteTask('{{ result.id }}')">Delete</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        
+                        </div>
                     {% endfor %}
-                </ul>
+                </table>
             {% else %}
                 <p>No tasks found matching your search.</p>
             {% endif %}

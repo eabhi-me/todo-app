@@ -42,7 +42,8 @@ def add():
         name = request.form['name']
         duedate = request.form['duedate']
         description = request.form['description']
-        new_task = Task(name=name, duedate=duedate, description=description)
+        owner = 1  # Ensure the owner is always set to id 1
+        new_task = Task(name=name, duedate=duedate, description=description, owner=owner)
         db.session.add(new_task)
         db.session.commit()
         return redirect(url_for('home'))

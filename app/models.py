@@ -11,7 +11,7 @@ from app import bcrypt
 # creating a table in database
 class Task(db.Model):
     id = db.Column(db.Integer(),primary_key=True) # this is the id and name used in database schema
-    name = db.Column(db.String(200), nullable=False, unique=True)
+    name = db.Column(db.String(200), nullable=False)
     duedate = db.Column(db.String(10), nullable=True)
     description = db.Column(db.String(400),nullable=True)
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
