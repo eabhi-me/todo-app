@@ -45,7 +45,7 @@
                               <th scope="row">{{task.id}}</th>
                               <td>{{ task.name }}</td>
                               <td>{{task.duedate}}</td>
-                              <td>{{task.discription}}</td>
+                              <td>{{task.description}}</td>
                               <td>
                                 <!-- button that trigger a javascript function delteTask -->
                                 <button class="btn btn-danger pl-1"  onclick="deleteTask('{{ task.id }}')">Delete</button>
@@ -81,14 +81,12 @@
                     </div>
                     <div class="col-lg-6 col-md mb-3">
                         <label>Description</label>
-                        <input type='textbox', id='discription', name="discription">
+                        <input type='textbox', id='description', name="description">
                     </div>
                     
 
                     <div class="text-center d-grid mt-1">
-                      <button type="button" class="btn btn-primary rounded-pill pt-3 pb-3">
                         <input type='submit' class="btn btn-primary">
-                      </button>
                     </div>
                 </form>
               </div>

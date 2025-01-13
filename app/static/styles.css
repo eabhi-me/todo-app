@@ -12,6 +12,19 @@
 body{
   background-color: rgb(176, 213, 246);
 }
+
+.wireframe-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wireframe {
+  background-color: var(--white);
+  border: 1px solid var(--primary-color-dark);
+  padding: 30px;
+  border-radius: 10px;
+}
 .tagline{
   @media screen and (max-width: 600px) {
     display: none;
