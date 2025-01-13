@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+    <section class="slogan">
+        <h1 class="display-3 text-center pb-3">
+        Welcome to <span class="text-primary">App</span>
+        Note anything.
+        </h1>
+    </section>
+
+    <div class="container">
+        <form method="post" class="form-register">
+            <h3>Login</h3>
+            <br>
+    
+            {{ form.email_address.label() }}
+            {{ form.email_address(class="form-control", placeholder="Email Address ") }}
+    
+            {{ form.password.label() }}
+            {{ form.password(class="form-control", placeholder="Password") }}
+    
+    
+            <br>
+            {{ form.submit(class="btn btn-primary")}}
+            
+        </form>
+        <br/>
+            
+        <h5>Not a user Register Here</h5>
+        <button class="btn btn-outline-success">
+            <a href="{{url_for('register_user')}}" style="text-decoration: none; color: black;">Register</a>
+        </button>
+    </div>
+</div>
+
+
+
+
+{% endblock%}
+
+
+{% block footer %}
+    
+{% endblock %}
