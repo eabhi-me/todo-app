@@ -17,11 +17,11 @@ This is a simple To-Do application built using Flask and Python. It allows users
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/to-do-app.git
+    git clone https://github.com/eabhi-me/todo-app.git
     ```
 2. Navigate to the project directory:
     ```bash
-    cd to-do-app
+    cd todo-app
     ```
 3. Install the required packages:
     ```bash

@@ -20,88 +20,51 @@
 <section class="pt-4 pt-md-11">
       <div class="container">
         <div class="row ml-1">
-          <div class="col-12 col-md-5 col-lg-6 order-md-2">
+            <div class="col-12 col-md-5 col-lg-6 order-md-2">
+                <img src="{{ url_for('static', filename='asset/illustration-2.png') }}" alt="Illustration" class="img-fluid">
+                
 
-            <!-- to how task -->
-            <h1 class="display-3 text-center text-md-start item-align-center">All Tasks</h1>
+                
 
-            {% if tasks%}
-
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Task</th>
-                  <th scope="col">Due Date</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-                    {% for task in tasks %}
-
-                        <div class="lead text-center text-md-start text-body-secondary mb-6 mb-lg-8 font-monospace">
-                          <tbody>
-                            <tr>
-                              <th scope="row">{{task.id}}</th>
-                              <td>{{ task.name }}</td>
-                              <td>{{task.duedate}}</td>
-                              <td>{{task.description}}</td>
-                              <td>
-                                <!-- button that trigger a javascript function delteTask -->
-                                <button class="btn btn-danger pl-1"  onclick="deleteTask('{{ task.id }}')">Delete</button>
-                              </td>
-                            </tr>
-                          </tbody>
-                        
-                        </div>
-                      
-                    {% endfor %}
-            </table>
-            {% else %}
-                <p>No task Here, Add Task</p>
-            {% endif %}
-
-          </div> <!-- end main div of task show-->
-
-          <!---- Div of Form to add task---->
-          <div class="col-12 col-md-7 col-lg-6 order-md-1 aos-init aos-animate" data-aos="fade-up">
-            <div class="col-12 col-lg-6 bg-white shadow p-3">
-            <div class="form w-100 pb-2">
-
-              <div>
-                <h1 class="display-3 text-center text-md-start">Add Task</h1>
-                <form action="/add" method='POST'>
-                    <div class="col-lg-6 col-md mb-3">
-                        <label>Task</label>
-                        <input type='text', id = 'name', name='name' required>
-                    </div>
-                    <div class="col-lg-6 col-md mb-3">
-                        <label>Due Date</label>
-                        <input type = 'date', id = 'duedate', name='duedate'>
-                    </div>
-                    <div class="col-lg-6 col-md mb-3">
-                        <label>Description</label>
-                        <input type='textbox', id='description', name="description">
-                    </div>
+            </div> <!-- / .col-->
+        
+            <div class="col-12 col-md-7 col-lg-6 order-md-1 aos-init aos-animate" data-aos="fade-up">
+                <h2 class="display-4">Organize Your Tasks</h2>
+                <p class="lead">
+                    Our to-do app helps you keep track of your tasks and stay organized. Add, edit, and delete tasks with ease. Stay productive and never miss a deadline again.
+                </p>
+                <button type="button" class="btn btn-outline-primary">
                     
-
-                    <div class="text-center d-grid mt-1">
-                        <input type='submit' class="btn btn-primary">
-                    </div>
-                </form>
-              </div>
-
+                    <!-- <span><i class="fas fa-arrow-right"></i></span> -->
+                     <a class = "text-decoration-none" href="{{url_for('register_user')}}">Register</a>
+                </button>
+                <button type="button" class="btn btn-outline-primary">
+                    <!-- <span><i class="fas fa-arrow-right"></i></span> -->
+                     <a class = "text-decoration-none" href="{{url_for('login')}}">
+                        Login
+                     </a>
+                </button>
+                <p class="mt-4 lead"></p>
+                    This app is designed to help you manage your daily tasks efficiently. 
+                    You can create new tasks, set deadlines, and mark them as completed. 
+                    The intuitive interface ensures that you can easily navigate through your tasks and stay on top of your schedule.
+                </p>
+                <p>
+                    Features include:
+                </p>
+                <ul class="list-group">
+                    <li class="list-group-item">Task creation and management</li>
+                    <li class="list-group-item">Deadline reminders</li>
+                </ul>
             </div>
-            </div>
 
 
-
-          </div> 
         </div> <!-- / .row -->
       </div> <!-- / .container -->
     </section>
 {% endblock%}
 {% block footer %}
+    
     
 {% endblock %}
 
