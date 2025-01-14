@@ -3,9 +3,18 @@
 
 # current dir import app that is __init__.py
 from . import app
-from app import db
+from app import db, login_manager # instance created in init file
 # impoting the instance that created in init py
 from app import bcrypt
+from flask_bcrypt import generate_password_hash
+
+# Imporitg the library that mage all user login method
+from flask_login import UserMixin
+
+# adding the decorator as loder that chect the state of login
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 # define a model in database
 # creating a table in database
@@ -20,7 +29,7 @@ class Task(db.Model):
         return f'Do {self.name}'
     
 # creating the user table
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer(),primary_key=True)
     username = db.Column(db.String(30), unique=True, nullable=False)
     email_address = db.Column(db.String(50), unique=True, nullable=False)
@@ -30,7 +39,7 @@ class User(db.Model):
     # adding the getter and setter for hased password
     @property
     def password(self):
-        return self.password
+        raise AttributeError('password is not a readable attribute')
 
     @password.setter
     def password(self, plain_text_password):
@@ -54,8 +63,8 @@ with app.app_context():
 
     if not User.query.first():
         master_user = [
-            User(username = 'admin', email_address = 'admin@gmail.com', password_hash = "admin"),
-            User(username = 'inovaix', email_address = 'inovaix@gmail.com', password_hash = "inovaix")
+            User(username = 'admin', email_address = 'admin@gmail.com', password_hash = generate_password_hash('admin')),
+            User(username = 'inovaix', email_address = 'inovaix@gmail.com', password_hash = generate_password_hash('inovaix'))
         ]
         db.session.bulk_save_objects(master_user)
         db.session.commit()
