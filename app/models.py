@@ -8,6 +8,10 @@ from app import db, login_manager # instance created in init file
 from app import bcrypt
 from flask_bcrypt import generate_password_hash
 
+# imporitg the env
+import os
+from app import load_dotenv
+
 # Imporitg the library that mage all user login method
 from flask_login import UserMixin
 
@@ -36,6 +40,10 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String(60), nullable = False)
     user_task = db.relationship('Task', backref='owned_user', lazy=True)
 
+    # adding th eopt verificton model
+    otp = db.Column(db.String(6), nullable=True)  # Store OTP
+    is_verified = db.Column(db.Boolean, default=False)  # Verification status
+
     # adding the getter and setter for hased password
     @property
     def password(self):
@@ -63,8 +71,8 @@ with app.app_context():
 
     if not User.query.first():
         master_user = [
-            User(username = 'admin', email_address = 'admin@gmail.com', password_hash = generate_password_hash('admin')),
-            User(username = 'inovaix', email_address = 'inovaix@gmail.com', password_hash = generate_password_hash('inovaix'))
+            User(username = 'admin', email_address = 'admin@gmail.com', password_hash = generate_password_hash(os.getenv('Master_User1_Password')), is_verified=True),
+            User(username = 'inovaix', email_address = 'inovaix@gmail.com', password_hash = generate_password_hash(os.getenv('Master_User2_Password')), is_verified=True)
         ]
         db.session.bulk_save_objects(master_user)
         db.session.commit()
