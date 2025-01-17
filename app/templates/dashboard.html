@@ -65,23 +65,23 @@
 
           <!---- Div of Form to add task---->
           <div class="col-12 col-md-7 col-lg-6 order-md-1 aos-init aos-animate" data-aos="fade-up">
-            <div class="col-12 col-lg-6 bg-white shadow p-3">
-            <div class="form w-100 pb-2">
+            <div class="col-12 col-lg-6 bg-white shadow p-3 rounded-5">
+            <div class="form w-100 pb-2 ps-lg-3">
 
               <div>
                 <h1 class="display-3 text-center text-md-start">Add Task</h1>
                 <form action="/add" method='POST'>
                     <div class="col-lg-6 col-md mb-3">
-                        <label>Task</label>
-                        <input type='text', id = 'name', name='name' required>
+                        <label class="form-label">Task</label>
+                        <input  clsss="form-control" type='text', id = 'name', name='name' placeholder="Add task" required>
                     </div>
                     <div class="col-lg-6 col-md mb-3">
-                        <label>Due Date</label>
+                        <label class="form-label">Due Date</label>
                         <input type = 'date', id = 'duedate', name='duedate'>
                     </div>
                     <div class="col-lg-6 col-md mb-3">
-                        <label>Description</label>
-                        <input type='textbox', id='description', name="description">
+                        <label class="form-label">Description</label>
+                        <input type='textbox', id='description', name="description", placeholder="Add More Info">
                     </div>
                     
 
