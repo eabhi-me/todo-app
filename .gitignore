@@ -34,6 +34,7 @@ env/
 *.pyenv/
 myenvToDo
 
+
 # IDE or Editor specific files
 .vscode/
 .idea/
